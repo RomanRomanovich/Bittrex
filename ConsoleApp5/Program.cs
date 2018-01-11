@@ -45,7 +45,7 @@ namespace ConsoleApp5
             WebRequest bittrexApi = WebRequest.Create("https://bittrex.com/api/v1.1/public/getmarketsummaries");
             //получаем ответ в поток
             Stream streamBittrex = bittrexApi.GetResponse().GetResponseStream();
-            //Создание класса для десериализации
+            //Создание класса
             DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(InfoCoin));
             //Десериализация файла JSON. Открытие его, десериализация в переменную infoCoin 
             InfoCoin infoCoin = new InfoCoin();

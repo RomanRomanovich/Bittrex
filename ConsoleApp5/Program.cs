@@ -12,7 +12,7 @@ using System.IO;
 namespace ConsoleApp5
 
 {
-
+    // class InfoCoin used for JSON 
     public class InfoCoin
     {
         public bool success { get; set; }
@@ -37,50 +37,11 @@ namespace ConsoleApp5
         public string Created { get; set; }
     }
 
-
-
-
-
     class Program
     {
-
-        static void Main(string[] args)
-        {   //указываем ссылку для запроса
-            
-            object obj = "https://bittrex.com/api/v1.1/public/getmarketsummaries";
-                       
-            Console.WriteLine("=>Программа, которая делает POST запрос на сайт Bittrex.");
-            Console.WriteLine("=> Получает ответ в виде JSON формата");
-            Console.WriteLine("=>Десерализирует JSON формат в класс C#");
-            Console.WriteLine("=>Производит вычисления");
-            Console.WriteLine("=> Анализ заявок на покупку больше чем на продажу");
-            
-            Console.WriteLine("=>Выводит эти пары");
-            // TimerCallback timerCallback = new TimerCallback(FindCoin);
-            // Timer timer = new Timer (timerCallback,null,0,10000);
-
-            //Поиск последовательности, которая растет на покупку
-
-            FindCoin(obj);
-
-
-
-
-
-
-
-
-            Console.ReadLine();
-
-    
-
-
-
-        }
-         private static void FindCoin(object obj)
+        private static void FindCoin(object obj)
         {   // формируем запрос
-
-           string  requestUrl = (string)obj;
+            string requestUrl = (string)obj;
             WebRequest bittrexApi = WebRequest.Create("https://bittrex.com/api/v1.1/public/getmarketsummaries");
             //получаем ответ в поток
             Stream streamBittrex = bittrexApi.GetResponse().GetResponseStream();
@@ -101,5 +62,30 @@ namespace ConsoleApp5
             Console.WriteLine("Количество пар: {0}", colCoin);
 
         }
+
+        static void Main(string[] args)
+        {   //указываем ссылку для запроса
+            
+            object obj = "https://bittrex.com/api/v1.1/public/getmarketsummaries";
+                       
+            Console.WriteLine("=>Программа, которая делает POST запрос на сайт Bittrex.");
+            Console.WriteLine("=> Получает ответ в виде JSON формата");
+            Console.WriteLine("=>Десерализирует JSON формат в класс C#");
+            Console.WriteLine("=>Производит вычисления");
+            Console.WriteLine("=> Анализ заявок на покупку больше чем на продажу");
+            
+            Console.WriteLine("=>Выводит эти пары");
+            // TimerCallback timerCallback = new TimerCallback(FindCoin);
+            // Timer timer = new Timer (timerCallback,null,0,10000);
+
+            //Поиск последовательности, которая растет на покупку
+            FindCoin(obj);
+
+            Console.ReadLine();
+
+    
+        }
+
+        
     }
 }

@@ -40,7 +40,7 @@ namespace ConsoleApp5
     class Program
     {
         private static void FindCoin(object obj)
-        {   // формируем запрос
+        {   // формируем запрос на сайт Bittrex
             string requestUrl = (string)obj;
             WebRequest bittrexApi = WebRequest.Create("https://bittrex.com/api/v1.1/public/getmarketsummaries");
             //получаем ответ в поток
